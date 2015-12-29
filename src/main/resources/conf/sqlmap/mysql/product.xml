@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap
+	PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN"
+	"http://www.ibatis.com/dtd/sql-map-2.dtd">
+
+<sqlMap>
+
+	<!--查询单个对象 -->
+	<select id="getProductByClassId" resultClass="java.util.HashMap">
+		SELECT
+		product_name
+		from product
+		<dynamic prepend="WHERE">
+			<isNotNull prepend=" AND" property="id">class_id=#class_id# </isNotNull>
+		</dynamic>
+	</select>
+	
+	
+</sqlMap>

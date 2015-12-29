@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMapConfig PUBLIC "-//ibatis.apache.org//DTD SQL Map Config 2.0//EN" 
+    "http://ibatis.apache.org/dtd/sql-map-config-2.dtd">
+
+<sqlMapConfig>
+	<properties resource="conf/sqlmap/sqlmap.properties"></properties>
+	<settings cacheModelsEnabled="true" 
+		enhancementEnabled="true"
+		lazyLoadingEnabled="true"
+		errorTracingEnabled="true" 
+		maxRequests="320"
+		maxSessions="100" 
+		maxTransactions="50" 
+		useStatementNamespaces="false" />
+	<!-- Identify all SQL Map XML files to be loaded by this SQL map. Relative to classpath -->
+	<typeHandler jdbcType="BLOB" javaType="[B" callback="org.springframework.orm.ibatis.support.BlobByteArrayTypeHandler" />
+	<typeHandler jdbcType="CLOB" javaType="java.lang.String" callback="org.springframework.orm.ibatis.support.ClobStringTypeHandler" />
+	<sqlMap resource="conf/sqlmap/${dialect}/user.xml" />
+	 <sqlMap resource="conf/sqlmap/${dialect}/wholesale.xml" />
+	<sqlMap resource="conf/sqlmap/${dialect}/product.xml" />
+	<!-- <sqlMap resource="conf/sqlmap/${dialect}/city/City.xml" />
+	<sqlMap resource="conf/sqlmap/${dialect}/county/County.xml" />
+	-->
+</sqlMapConfig>

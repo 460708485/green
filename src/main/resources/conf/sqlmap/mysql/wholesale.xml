@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap
+	PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN"
+	"http://www.ibatis.com/dtd/sql-map-2.dtd">
+
+<sqlMap>
+
+	<!--查询所有对象 -->
+	<select id="getWholeSales" resultClass="java.util.HashMap">
+		SELECT
+		wholesale_id ,
+		wholesale_name,
+		credit,
+		detail,
+		address,
+		w_picture	
+		from wholesale
+		
+	</select>
+	
+	<!-- 查询所有信誉好的对象 -->
+	<select id="getGoodWholeSales" resultClass="java.util.HashMap">
+		SELECT
+		wholesale_id ,
+		wholesale_name,
+		credit,
+		detail,
+		address,
+		w_picture	
+		from wholesale
+		<![CDATA[where credit>4]]><!-- 用CDATA说明此语句不解析 -->
+	</select>
+	
+	<!-- 根据用户id获取用户信息 -->
+	<select id="getWholeSaleByID" parameterClass="int" resultClass="com.wang.green.domain.WholeSale" >
+		SELECT
+		wholesale_id ,
+		wholesale_name,
+		credit,
+		detail,
+		address,
+		w_picture
+		from wholesale
+		<dynamic prepend="WHERE">
+			<isNotNull prepend=" AND" property="value">wholesale_id = #id#</isNotNull>
+		</dynamic>
+	</select>
+	
+	
+	<insert id="addWholeSale" parameterClass="com.wang.green.domain.WholeSale" >
+		insert into wholesale(wholesale_id,wholesale_name,credit,detail,address，w_picture	)
+		values (#wholesale_id# ,#wholesale_name#,#credit#,#detail#,#address#,#w_picture#)
+	</insert>
+	
+	
+</sqlMap>

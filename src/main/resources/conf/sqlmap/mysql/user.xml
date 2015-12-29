@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap
+	PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN"
+	"http://www.ibatis.com/dtd/sql-map-2.dtd">
+
+<sqlMap>
+
+	<!--查询单个对象 -->
+	<select id="getUser" resultClass="com.wang.green.domain.User">
+		SELECT
+		
+		username,
+		password,
+		phone,
+		status,
+		email
+		from user
+		<dynamic prepend="WHERE">
+			<isNotNull prepend=" AND" property="id">user_id= #id# </isNotNull>
+		</dynamic>
+	</select>
+	
+	<!-- 根据用户id获取用户信息 -->
+	<select id="getUserByID" parameterClass="int" resultClass="com.wang.green.domain.User" >
+		SELECT
+		username,
+		password,
+		phone,
+		status,
+		email
+		from user
+		<dynamic prepend="WHERE">
+			<isNotNull prepend=" AND" property="value">user_id = #id#</isNotNull>
+		</dynamic>
+	</select>
+	
+	<select id="checkUser" parameterClass="java.lang.String" resultClass="java.lang.String" >
+		SELECT password
+		from user
+		<dynamic prepend="WHERE">
+			<isNotNull prepend=" AND" property="value">username = #username#</isNotNull>
+		</dynamic>
+		
+	</select>
+	
+	<insert id="addUser" parameterClass="com.wang.green.domain.User" >
+		insert into user(username,password,phone,status,email)
+		values (#username#,#password#,#phone#,#status#,#email#)
+	</insert>
+</sqlMap>
