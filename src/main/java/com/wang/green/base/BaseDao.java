@@ -10,7 +10,7 @@ import java.util.Map;
  *
  */
 public interface BaseDao<T> {
-
+		
 	/**
 	 * @Description:得到数据对象
 	 * @param param

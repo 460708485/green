@@ -31,19 +31,18 @@
 		<![CDATA[where credit>4]]><!-- 用CDATA说明此语句不解析 -->
 	</select>
 	
-	<!-- 根据用户id获取用户信息 -->
-	<select id="getWholeSaleByID" parameterClass="int" resultClass="com.wang.green.domain.WholeSale" >
+	<!-- 根据用户id获取用户属下的所有商品信息 -->
+	<select id="getWholeSaleGoodsByID" parameterClass="int" resultClass="java.util.HashMap" >
 		SELECT
-		wholesale_id ,
-		wholesale_name,
-		credit,
-		detail,
-		address,
-		w_picture
-		from wholesale
-		<dynamic prepend="WHERE">
-			<isNotNull prepend=" AND" property="value">wholesale_id = #id#</isNotNull>
-		</dynamic>
+		w.wholesale_name,
+		wp.product_id,
+		wp.product_price,
+		wp.promote_price,
+		wp.status,
+		wp.sale_volume,
+		wp.left_time
+		from wholesale w, wpinfo wp
+		<![CDATA[where w.wholesale_id=wp.wholesale_id and w.wholesale_id=#id#]]>
 	</select>
 	
 	

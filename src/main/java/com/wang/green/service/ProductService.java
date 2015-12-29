@@ -6,4 +6,6 @@ public interface ProductService {
 	
 	public Result getProductByClassId(int class_id);
 
+	public Result getProductById(int id);
+	
 }

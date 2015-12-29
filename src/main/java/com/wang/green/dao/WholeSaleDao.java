@@ -3,6 +3,7 @@ package com.wang.green.dao;
 import java.util.List;
 
 import com.wang.green.base.BaseDao;
+import com.wang.green.domain.WPinfo;
 import com.wang.green.domain.WholeSale;
 
 public interface WholeSaleDao extends BaseDao<WholeSale>{
@@ -21,6 +22,6 @@ public interface WholeSaleDao extends BaseDao<WholeSale>{
 	 * @param id
 	 * @return
 	 */
-	public WholeSale getWholeSaleByID(int id);
+	public List<WPinfo> getWholeSaleGoodsByID(int id);
 	
 }

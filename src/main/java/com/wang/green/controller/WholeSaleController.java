@@ -39,7 +39,7 @@ private Logger logger = Logger.getLogger(UserController.class);
 	@RequestMapping("getWholeSaleById")
 	public Result getWholeSaleById(int id ){
 		
-		return wholeSaleService.getUserById(id);
+		return wholeSaleService.getUserGoodsById(id);
 		
 	}
 	

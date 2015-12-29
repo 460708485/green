@@ -17,8 +17,8 @@ public class ProductDaoImpl extends BaseDaoImpl<Product> implements ProductDao{
 		return this.sqlMapClientTemplate.queryForList("getProductByClassId", Integer.valueOf(class_id));
 	}
 
-	
-	
-	
-
+	public Product getProductByProductId(int id) {
+		
+		return (Product)this.sqlMapClientTemplate.queryForObject("getProductByProductId", Integer.valueOf(id));
+	}
 }

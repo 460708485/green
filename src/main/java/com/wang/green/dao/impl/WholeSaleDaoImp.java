@@ -6,6 +6,7 @@ import org.springframework.stereotype.Repository;
 
 import com.wang.green.base.BaseDaoImpl;
 import com.wang.green.dao.WholeSaleDao;
+import com.wang.green.domain.WPinfo;
 import com.wang.green.domain.WholeSale;
 
 @Repository
@@ -17,9 +18,10 @@ public class WholeSaleDaoImp extends BaseDaoImpl<WholeSale> implements WholeSale
 		
 	}
 
-	public WholeSale getWholeSaleByID(int id) {
+	@SuppressWarnings("unchecked")
+	public List<WPinfo> getWholeSaleGoodsByID(int id) {
 	
-		return (WholeSale) this.sqlMapClientTemplate.queryForObject("getWholeSaleByID", id);
+		return  this.sqlMapClientTemplate.queryForList("getWholeSaleGoodsByID", id);
 	}
 
 	public int addWholeSale(WholeSale wholesale) {

@@ -5,15 +5,25 @@
 
 <sqlMap>
 
-	<!--查询单个对象 -->
-	<select id="getProductByClassId" resultClass="java.util.HashMap">
+	<!--查询类别下所有子对象 -->
+	<select id="getProductByClassId" parameterClass="int" resultClass="java.util.HashMap">
 		SELECT
-		product_name
+		c.type,
+		p.product_name，
+		p.marketprice,
+		p.picture
+		from product p,vclass c
+		<![CDATA[where p.class_id=c.class_id and c.class_id=#id#]]>
+	</select>
+	<!--根据蔬菜的id查找对应的信息  -->	
+	<select id="getProductByProductId" parameterClass="java.lang.Integer" resultClass="com.wang.green.domain.Product">
+		SELECT
+		product_name,
+		marketprice,
+		picture
 		from product
 		<dynamic prepend="WHERE">
-			<isNotNull prepend=" AND" property="id">class_id=#class_id# </isNotNull>
+			<isNotNull prepend=" AND" property="value">product_id=#product_id# </isNotNull>
 		</dynamic>
 	</select>
-	
-	
 </sqlMap>

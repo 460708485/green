@@ -9,17 +9,19 @@ import java.io.Serializable;
 public class WPinfo implements Serializable{
 
 	private static final long serialVersionUID = 1000008L;
-	private Integer wholesale_id;
+	private String wholesale_name;
 	private Integer product_id;
 	private double product_price;//商家定价
 	private double promote_price;//促销价
+	private int status;//状态 0为不促销，1为促销
 	private int sale_volume;//销量
 	private int left_time;//促销剩余时间
-	public Integer getWholesale_id() {
-		return wholesale_id;
+
+	public String getWholesale_name() {
+		return wholesale_name;
 	}
-	public void setWholesale_id(Integer wholesale_id) {
-		this.wholesale_id = wholesale_id;
+	public void setWholesale_name(String wholesale_name) {
+		this.wholesale_name = wholesale_name;
 	}
 	public Integer getProduct_id() {
 		return product_id;
@@ -52,12 +54,20 @@ public class WPinfo implements Serializable{
 	public void setLeft_time(int left_time) {
 		this.left_time = left_time;
 	}
+	
+	
+	public int getStatus() {
+		return status;
+	}
+	public void setStatus(int status) {
+		this.status = status;
+	}
 	@Override
 	public String toString() {
-		return "WPinfo [wholesale_id=" + wholesale_id + ", product_id=" + product_id + ", product_price="
-				+ product_price + ", promote_price=" + promote_price + ", sale_volume=" + sale_volume + ", left_time=" + left_time + "]";
+		return "WPinfo [wholesale_name=" + wholesale_name + ", product_id=" + product_id + ", product_price="
+				+ product_price + ", promote_price=" + promote_price + ", status=" + status + ", sale_volume="
+				+ sale_volume + ", left_time=" + left_time + "]";
 	}
-	
 	
 	
 	

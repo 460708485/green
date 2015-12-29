@@ -7,7 +7,7 @@ public interface WholeSaleService {
 	
 	public Result getUsers();
 
-	public Result getUserById(int id);
+	public Result getUserGoodsById(int id);
 	
 	public Result getGoodUsers();
 	

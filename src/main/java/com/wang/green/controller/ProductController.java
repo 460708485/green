@@ -22,5 +22,11 @@ public class ProductController {
 		
 	} 
 	
-	
+	@ResponseBody
+	@RequestMapping("getProductById")
+	public Result getProductById(int product_id){
+		
+		return productService.getProductById(product_id);
+		
+	} 
 }

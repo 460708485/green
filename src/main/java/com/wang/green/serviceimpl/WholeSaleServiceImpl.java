@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.wang.green.dao.WholeSaleDao;
 import com.wang.green.domain.Result;
+import com.wang.green.domain.WPinfo;
 import com.wang.green.domain.WholeSale;
 import com.wang.green.service.WholeSaleService;
 
@@ -26,12 +27,12 @@ public class WholeSaleServiceImpl implements WholeSaleService{
 		return result;
 	}
 
-	public Result getUserById(int id) {
+	public Result getUserGoodsById(int id) {
 		Result result=new Result();
-		WholeSale wholeSale=wholeSaleDao.getWholeSaleByID(id);
+		List<WPinfo> wpinfos=wholeSaleDao.getWholeSaleGoodsByID(id);
 		result.setStatus(1);
 		result.setMsg("查询成功！");
-		result.setData(wholeSale);
+		result.setData(wpinfos);
 		return result;
 	}
 

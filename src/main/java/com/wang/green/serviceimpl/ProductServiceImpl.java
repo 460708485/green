@@ -24,6 +24,15 @@ public class ProductServiceImpl implements ProductService{
 		result.setData(products);
 		return result;
 	}
+
+	public Result getProductById(int id) {
+		
+		Result result=new Result();
+		result.setStatus(1);
+		result.setMsg("查询成功");
+		result.setData(productDao.getProductByProductId(id));
+		return result;
+	}
 	
 
 }

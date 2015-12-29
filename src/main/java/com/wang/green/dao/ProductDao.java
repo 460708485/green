@@ -9,4 +9,6 @@ public interface ProductDao extends BaseDao<Product>{
 	 
 	public List<Product> getProductByClassId(int class_id);
 	
+	
+	public Product getProductByProductId(int id);
 }
