@@ -7,6 +7,7 @@ import org.springframework.stereotype.Repository;
 import com.wang.green.base.BaseDaoImpl;
 import com.wang.green.dao.ProductDao;
 import com.wang.green.domain.Product;
+import com.wang.green.domain.WPinfo;
 
 @Repository
 public class ProductDaoImpl extends BaseDaoImpl<Product> implements ProductDao{
@@ -20,5 +21,10 @@ public class ProductDaoImpl extends BaseDaoImpl<Product> implements ProductDao{
 	public Product getProductByProductId(int id) {
 		
 		return (Product)this.sqlMapClientTemplate.queryForObject("getProductByProductId", Integer.valueOf(id));
+	}
+
+	@SuppressWarnings("unchecked")
+	public List<WPinfo> getWProductByClassId(int class_id) {
+		return this.sqlMapClientTemplate.queryForList("getWProductByClassId", class_id);
 	}
 }

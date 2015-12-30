@@ -15,6 +15,7 @@
 		from product p,vclass c
 		<![CDATA[where p.class_id=c.class_id and c.class_id=#id#]]>
 	</select>
+	
 	<!--根据蔬菜的id查找对应的信息  -->	
 	<select id="getProductByProductId" parameterClass="java.lang.Integer" resultClass="com.wang.green.domain.Product">
 		SELECT
@@ -26,4 +27,21 @@
 			<isNotNull prepend=" AND" property="value">product_id=#product_id# </isNotNull>
 		</dynamic>
 	</select>
+	
+	<!-- 获取产品信息 ：当点击分类的时候，弹出对应的类的所有种植户的产品信息-->
+	<select id="getWProductByClassId" parameterClass="int" resultClass="java.util.HashMap" >
+		SELECT
+		w.id,
+		p.product_name,
+		p.picture,
+		w.product_price,
+		w.status,
+		w.sale_volume,
+		w.left_time
+		from product p,wpinfo w
+		where p.product_id=w.product_id and p.class_id=#id#
+		
+	</select>
+	
+	
 </sqlMap>

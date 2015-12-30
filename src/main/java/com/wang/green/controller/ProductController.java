@@ -29,4 +29,11 @@ public class ProductController {
 		return productService.getProductById(product_id);
 		
 	} 
+	
+	@ResponseBody
+	@RequestMapping("getWProductByClassId")
+	public Result getWProductByClassId(int class_id){
+		return productService.getWProductByClassId(class_id);
+	}
+	
 }

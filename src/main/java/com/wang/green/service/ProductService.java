@@ -8,4 +8,7 @@ public interface ProductService {
 
 	public Result getProductById(int id);
 	
+	public Result getWProductByClassId(int class_id);
+	
+	
 }

@@ -11,6 +11,8 @@ public class WPinfo implements Serializable{
 	private static final long serialVersionUID = 1000008L;
 	private String wholesale_name;
 	private Integer product_id;
+	private String product_name;//产品名
+	private String picture;//产品图片
 	private double product_price;//商家定价
 	private double promote_price;//促销价
 	private int status;//状态 0为不促销，1为促销
@@ -54,14 +56,26 @@ public class WPinfo implements Serializable{
 	public void setLeft_time(int left_time) {
 		this.left_time = left_time;
 	}
-	
-	
+	public String getProduct_name() {
+		return product_name;
+	}
+	public void setProduct_name(String product_name) {
+		this.product_name = product_name;
+	}
+	public String getPicture() {
+		return picture;
+	}
+	public void setPicture(String picture) {
+		this.picture = picture;
+	}
 	public int getStatus() {
 		return status;
 	}
 	public void setStatus(int status) {
 		this.status = status;
 	}
+	
+	
 	@Override
 	public String toString() {
 		return "WPinfo [wholesale_name=" + wholesale_name + ", product_id=" + product_id + ", product_price="
