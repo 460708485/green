@@ -16,7 +16,7 @@ public class ProductController {
 	
 	@ResponseBody
 	@RequestMapping("getProductByClassId")
-	public Result getProduct(int class_id){
+	public Result getProduct(Integer class_id){
 		
 		return productService.getProductByClassId(class_id);
 		

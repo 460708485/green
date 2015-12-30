@@ -4,7 +4,7 @@ import com.wang.green.domain.Result;
 
 public interface ProductService {
 	
-	public Result getProductByClassId(int class_id);
+	public Result getProductByClassId(Integer class_id);
 
 	public Result getProductById(int id);
 	

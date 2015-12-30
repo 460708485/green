@@ -12,6 +12,7 @@ public class Product implements Serializable{
 	
 	private Integer product_id;
 	private Integer class_id;
+	private String type;
 	private String product_name;
 	private double marketprice;
 	private String picture;
@@ -27,6 +28,14 @@ public class Product implements Serializable{
 	}
 	public void setClass_id(Integer class_id) {
 		this.class_id = class_id;
+	}
+	
+	
+	public String getType() {
+		return type;
+	}
+	public void setType(String type) {
+		this.type = type;
 	}
 	public String getProduct_name() {
 		return product_name;

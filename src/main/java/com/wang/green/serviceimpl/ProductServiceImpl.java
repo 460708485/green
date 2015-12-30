@@ -15,7 +15,7 @@ public class ProductServiceImpl implements ProductService{
 	@Autowired
 	private ProductDao productDao;
 	
-	public Result getProductByClassId(int class_id) {
+	public Result getProductByClassId(Integer class_id) {
 		
 		Result result=new Result();
 		result.setStatus(1);
