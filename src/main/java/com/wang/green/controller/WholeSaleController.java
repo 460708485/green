@@ -43,5 +43,14 @@ private Logger logger = Logger.getLogger(UserController.class);
 		
 	}
 	
+	@ResponseBody
+	@RequestMapping("getAllGoods")
+	public Result getWholeSaleGoods(){
+		
+		return wholeSaleService.getUserGoods();
+		
+	}
+	
+	
 	
 }

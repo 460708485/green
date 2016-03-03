@@ -18,7 +18,6 @@
 	<sqlMap resource="conf/sqlmap/${dialect}/user.xml" />
 	 <sqlMap resource="conf/sqlmap/${dialect}/wholesale.xml" />
 	<sqlMap resource="conf/sqlmap/${dialect}/product.xml" />
-	<!-- <sqlMap resource="conf/sqlmap/${dialect}/city/City.xml" />
-	<sqlMap resource="conf/sqlmap/${dialect}/county/County.xml" />
-	-->
+	<sqlMap resource="conf/sqlmap/${dialect}/ad.xml" />
+	<sqlMap resource="conf/sqlmap/${dialect}/cartitem.xml" />
 </sqlMapConfig>

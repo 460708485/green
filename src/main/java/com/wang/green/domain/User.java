@@ -11,7 +11,8 @@ import java.io.Serializable;
 public class User implements Serializable{
 
 	private static final long serialVersionUID = 1000000L;
-
+	
+	private int user_id;
 	private String username;
 
 	private String password;
@@ -21,6 +22,15 @@ public class User implements Serializable{
 	private String email;
 	
 	private Integer status;//status为0时，为普通用户，status为1时，为会员用户
+
+	
+	public int getUser_id() {
+		return user_id;
+	}
+
+	public void setUser_id(int user_id) {
+		this.user_id = user_id;
+	}
 
 	public String getUsername() {
 		return username;

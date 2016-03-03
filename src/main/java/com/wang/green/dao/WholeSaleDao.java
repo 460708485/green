@@ -23,5 +23,11 @@ public interface WholeSaleDao extends BaseDao<WholeSale>{
 	 * @return
 	 */
 	public List<WPinfo> getWholeSaleGoodsByID(int id);
+	/**
+	 * 获取所有产品信息
+	 * @param id
+	 * @return
+	 */
+	public List<WPinfo> getWholeSaleGoods();
 	
 }

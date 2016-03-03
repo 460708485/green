@@ -35,27 +35,34 @@ public class UserServiceImpl implements UserService{
 	}
 
 	public Result checkUserByName(String username,String password) {
-		String rightPwd=userDao.checkUser(username);
+		User user=userDao.checkUser(username);
 		Result result=new Result();
-		if(rightPwd==null){
+		if(null==user){
 			result.setStatus(0);
-			result.setMsg("用户名不存在！");
+			result.setMsg("用户不存在！");
 			return result;
 		}
-		if(!password.equals(rightPwd)){
+		if(!password.equals(user.getPassword())){
 			result.setStatus(0);
 			result.setMsg("密码错误！");
 			return result;
 		}
 		result.setStatus(1);
 		result.setMsg("登录成功！");
+		result.setData(user);
 		return result;
 	}
 	
 	public Result addUser(User user){
 		Result result =new Result();
+		User user1=userDao.checkUser(user.getUsername());
+		if(null!=user1){
+			result.setMsg("用户名已存在！");
+			result.setStatus(1);
+			return result;
+		}
 		int num=userDao.addUser(user);
-		if(num==1){
+		if(0!=num){
 			result.setStatus(1);
 			result.setMsg("注册成功！");
 			return result;

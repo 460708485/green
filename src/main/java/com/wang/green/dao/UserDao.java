@@ -25,7 +25,7 @@ public interface UserDao extends BaseDao<User>{
 	 * @param password
 	 * @return
 	 */
-	public String checkUser(String username);
+	public User checkUser(String username);
 	
 	/**
 	 * 添加用户

@@ -5,10 +5,13 @@ package com.wang.green.controller;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.google.gson.Gson;
 import com.wang.green.domain.Result;
+import com.wang.green.domain.User;
 import com.wang.green.service.UserService;
 
 /**
@@ -31,5 +34,21 @@ public class UserController {
 	public Result getUserByID(int id){
 		Result result=userService.getUserByID(id);
 		return result;
+	}
+	
+	@ResponseBody
+	@RequestMapping("/check")
+	public Result check(String username,String password){
+		return userService.checkUserByName(username, password);
+	}
+	//"{'username':'里','phone':'13464659794','password':'123','email':'456468652@qq.com','status':'0'}"
+	@ResponseBody
+	@RequestMapping("/register")
+	public Result register(@RequestBody String json){
+		//String json="{'username':'里','phone':'13464659794','password':'123','email':'456468652@qq.com','status':'0'}";
+		Gson gson=new Gson();
+		User user=gson.fromJson(json, User.class);
+		return userService.addUser(user);
+		
 	}
 }

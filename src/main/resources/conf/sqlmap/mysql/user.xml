@@ -6,9 +6,9 @@
 <sqlMap>
 
 	<!--查询单个对象 -->
-	<select id="getUser" resultClass="com.wang.green.domain.User">
+	<select id="getUser"  parameterClass="java.lang.String" resultClass="com.wang.green.domain.User" > 
 		SELECT
-		
+		user_id,
 		username,
 		password,
 		phone,
@@ -16,13 +16,14 @@
 		email
 		from user
 		<dynamic prepend="WHERE">
-			<isNotNull prepend=" AND" property="id">user_id= #id# </isNotNull>
+			<isNotNull prepend=" AND" property="username">username= #username# </isNotNull>
 		</dynamic>
 	</select>
 	
 	<!-- 根据用户id获取用户信息 -->
 	<select id="getUserByID" parameterClass="int" resultClass="com.wang.green.domain.User" >
 		SELECT
+		user_id,
 		username,
 		password,
 		phone,
@@ -34,8 +35,14 @@
 		</dynamic>
 	</select>
 	
-	<select id="checkUser" parameterClass="java.lang.String" resultClass="java.lang.String" >
-		SELECT password
+	<select id="checkUser" parameterClass="java.lang.String" resultClass="com.wang.green.domain.User" >
+		SELECT 
+		user_id,
+		username,
+		password,
+		phone,
+		status,
+		email
 		from user
 		<dynamic prepend="WHERE">
 			<isNotNull prepend=" AND" property="value">username = #username#</isNotNull>
@@ -46,5 +53,8 @@
 	<insert id="addUser" parameterClass="com.wang.green.domain.User" >
 		insert into user(username,password,phone,status,email)
 		values (#username#,#password#,#phone#,#status#,#email#)
+		<selectKey resultClass="int" keyProperty="user_id"> 
+		select max(user_id) from user 
+		</selectKey>     
 	</insert>
 </sqlMap>

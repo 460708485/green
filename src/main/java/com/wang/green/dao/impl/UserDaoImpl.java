@@ -20,13 +20,13 @@ public class UserDaoImpl extends BaseDaoImpl<User> implements UserDao{
 	}
 
 	public int addUser(User user) {
-		
 		return (Integer)this.sqlMapClientTemplate.insert("addUser", user);
 	}
 
-	public String checkUser(String username) {
+	public User checkUser(String username) {
 		
-		return (String)this.sqlMapClientTemplate.queryForObject("checkUser", username);
+		return (User)this.sqlMapClientTemplate.queryForObject("checkUser", username);
 	}
+
 
 }

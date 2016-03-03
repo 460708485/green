@@ -11,6 +11,7 @@ public interface WholeSaleService {
 	
 	public Result getGoodUsers();
 	
+	public Result getUserGoods();
 	
 	
 }
