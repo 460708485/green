@@ -55,20 +55,21 @@ public class UserServiceImpl implements UserService{
 	
 	public Result addUser(User user){
 		Result result =new Result();
+		System.out.println("****"+user);
 		User user1=userDao.checkUser(user.getUsername());
 		if(null!=user1){
-			result.setMsg("用户名已存在！");
+			result.setMsg("exist！");
 			result.setStatus(1);
 			return result;
 		}
 		int num=userDao.addUser(user);
 		if(0!=num){
 			result.setStatus(1);
-			result.setMsg("注册成功！");
+			result.setMsg("register success！");
 			return result;
 		}
 		result.setStatus(0);
-		result.setMsg("注册失败！");
+		result.setMsg("register failed！");
 		return result;
 	}
 	

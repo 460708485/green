@@ -42,7 +42,7 @@
 		id, wpinfo_id,user_id,prodNum,price
 		FROM cartitem
 		WHERE
-		id=#id#
+		user_id=#user_id#
 	]]>
 	</select>
 	

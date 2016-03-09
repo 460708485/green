@@ -15,7 +15,7 @@ public  class AdImp extends BaseDaoImpl<Ad> implements AdDao {
 
 	public List<Ad> findNew(int status) {
 		
-		return this.sqlMapClientTemplate.queryForList("findNew", status);
+		return this.sqlMapClientTemplate.queryForList("ad.findNew", status);
 	}
 	
 	
