@@ -20,8 +20,8 @@ public class CartItemController {
 	private CartItemService cartItemService;
 	@ResponseBody
 	@RequestMapping("getById")
-	public Result getById(int id){
-		Result result=cartItemService.getById(id);
+	public Result getById(int user_id){
+		Result result=cartItemService.getById(user_id);
 		return result;
 	}; 
 	

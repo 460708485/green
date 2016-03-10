@@ -32,6 +32,7 @@
 	</select>
 	 <select id="getWholeSaleGoods" parameterClass="int" resultClass="java.util.HashMap" >
 		SELECT
+		wp.id,
 		w.wholesale_name,
 		wp.product_id,
 		p.picture,
@@ -45,6 +46,7 @@
 	
 	 <select id="getWholeSaleGoodsByID" parameterClass="int" resultClass="java.util.HashMap" >
 		SELECT
+		wp.id,
 		w.wholesale_name,
 		wp.product_id,
 		p.product_name,
@@ -57,9 +59,27 @@
 		 left outer join product p on wp.product_id=p.product_id
 		where  w.wholesale_id=#id#
 	</select>
+	
+	
+	 <select id="getWholeSaleGoodsByWPId" parameterClass="int" resultClass="java.util.HashMap" >
+		SELECT
+		wp.id,
+		w.wholesale_name,
+		wp.product_id,
+		p.product_name,
+		p.picture,
+		wp.product_price,
+		wp.promote_price,
+		wp.sale_volume,
+		wp.left_time
+		from wholesale w left outer join wpinfo wp on w.wholesale_id=wp.wholesale_id
+		 left outer join product p on wp.product_id=p.product_id
+		where  wp.id=#id#
+	</select>
 	<!-- 根据产品名称模糊查询产品 -->
 	 <select id="getWholeSaleGoodsByName" parameterClass="java.lang.String" resultClass="java.util.HashMap" >
 		SELECT
+		wp.id,
 		w.wholesale_name,
 		wp.product_id,
 		p.product_name,
@@ -76,6 +96,7 @@
 		<!-- 根据种植户地址模糊查询产品 -->
 	 <select id="getWholeSaleGoodsByAddress" parameterClass="java.lang.String" resultClass="java.util.HashMap" >
 		SELECT
+		wp.id,
 		w.wholesale_name,
 		w.address,
 		wp.product_id,

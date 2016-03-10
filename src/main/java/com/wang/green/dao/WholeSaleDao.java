@@ -43,5 +43,10 @@ public interface WholeSaleDao extends BaseDao<WholeSale>{
 	 * @return
 	 */
 	public List<WPinfo> getWholeSaleGoods();
-	
+	/**
+	 * 根据id获取产品信息
+	 * @param id
+	 * @return
+	 */
+	public WPinfo getWholeSaleGoodsByWPId(int id);
 }

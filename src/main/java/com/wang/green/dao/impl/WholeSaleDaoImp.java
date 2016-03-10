@@ -47,6 +47,10 @@ public class WholeSaleDaoImp extends BaseDaoImpl<WholeSale> implements WholeSale
 		return this.sqlMapClientTemplate.queryForList("getWholeSaleGoodsByAddress", address);
 	}
 
+	public WPinfo getWholeSaleGoodsByWPId(int id) {
+		return (WPinfo) this.sqlMapClientTemplate.queryForObject("getWholeSaleGoodsByWPId", id);
+	}
+
 	
 
 }

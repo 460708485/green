@@ -1,8 +1,9 @@
 package com.wang.green.dao;
-import java.util.*;
+import java.util.List;
 
 import com.wang.green.base.BaseDao;
 import com.wang.green.domain.CartItem;
+import com.wang.green.domain.WPinfo;
 
 
 /**
@@ -10,9 +11,9 @@ import com.wang.green.domain.CartItem;
  */
 public interface CartItemDao extends BaseDao<CartItem> {
 	/**
-	 * 根据主键查询(唯一)
+	 * 根据用户id查询(唯一)
 	 */
-	public CartItem getById(int id); 
+	public List<WPinfo> getById(int id); 
 	
 	public int update(CartItem CartItem);
 	

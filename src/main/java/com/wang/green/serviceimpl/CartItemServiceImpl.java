@@ -1,5 +1,7 @@
 package com.wang.green.serviceimpl;
 
+import java.util.List;
+
 import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
@@ -7,6 +9,7 @@ import org.springframework.stereotype.Service;
 import com.wang.green.dao.CartItemDao;
 import com.wang.green.domain.CartItem;
 import com.wang.green.domain.Result;
+import com.wang.green.domain.WPinfo;
 import com.wang.green.service.CartItemService;
 
 @Service
@@ -16,7 +19,7 @@ public class CartItemServiceImpl implements CartItemService{
 	
 	public Result getById(int id) {
 		Result result=new Result();
-		CartItem cartItem=cartItemDao.getById(id);
+		List<WPinfo> cartItem=cartItemDao.getById(id);
 		
 		result.setData(cartItem);
 		return result;

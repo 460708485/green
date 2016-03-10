@@ -36,11 +36,19 @@
 	]]>
 	</select>
 	
-	<select id="getById" parameterClass="java.lang.Integer" resultClass="cartitem">
+	<select id="getById" parameterClass="java.lang.Integer" resultClass="com.wang.green.domain.WPinfo">
 	<![CDATA[
 		SELECT
-		id, wpinfo_id,user_id,prodNum,price
-		FROM cartitem
+		wp.id,
+		w.wholesale_name,
+		w.address,
+		wp.product_id,
+		p.product_name,
+		p.picture,
+		wp.promote_price
+		from wholesale w left outer join wpinfo wp on w.wholesale_id=wp.wholesale_id
+		 left outer join product p on wp.product_id=p.product_id
+		 left outer join cartitem c on wp.id=c.wpinfo_id 
 		WHERE
 		user_id=#user_id#
 	]]>
