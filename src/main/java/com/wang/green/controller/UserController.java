@@ -41,11 +41,9 @@ public class UserController {
 	public Result check(String username,String password){
 		return userService.checkUserByName(username, password);
 	}
-	//"{'username':'里','phone':'13464659794','password':'123','email':'456468652@qq.com','status':'0'}"
 	@ResponseBody
 	@RequestMapping("/register")
 	public Result register(@RequestBody String json){
-		//String json="{'username':'里','phone':'13464659794','password':'123','email':'456468652@qq.com','status':'0'}";
 		Gson gson=new Gson();
 		User user=gson.fromJson(json, User.class);
 		return userService.addUser(user);

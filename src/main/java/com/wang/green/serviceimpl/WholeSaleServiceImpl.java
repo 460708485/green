@@ -55,4 +55,22 @@ public class WholeSaleServiceImpl implements WholeSaleService{
 		return result;
 	}
 
+	public Result getUserGoodsByName(String name) {
+		Result result=new Result();
+		List<WPinfo> wpinfos=wholeSaleDao.getWholeSaleGoodsByName(name);
+		result.setStatus(1);
+		result.setMsg("查询成功！");
+		result.setData(wpinfos);
+		return result;
+	}
+
+	public Result getUserGoodsByAddress(String address) {
+		Result result=new Result();
+		List<WPinfo> wpinfos=wholeSaleDao.getWholeSaleGoodsByAddress(address);
+		result.setStatus(1);
+		result.setMsg("查询成功！");
+		result.setData(wpinfos);
+		return result;
+	}
+
 }

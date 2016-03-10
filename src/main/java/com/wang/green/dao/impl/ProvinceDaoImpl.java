@@ -16,6 +16,6 @@ public class ProvinceDaoImpl extends BaseDaoImpl<Province> implements ProvinceDa
 	}
 
 	public Province getById(int id) {
-		return (Province) this.sqlMapClientTemplate.queryForList("province.findById", id);
+		return (Province) this.sqlMapClientTemplate.queryForObject("province.findById", id);
 	}
 }

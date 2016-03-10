@@ -1,5 +1,9 @@
 package com.wang.green.controller;
 
+import java.io.UnsupportedEncodingException;
+import java.net.URLDecoder;
+import java.net.URLEncoder;
+
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -41,6 +45,30 @@ private Logger logger = Logger.getLogger(UserController.class);
 		
 		return wholeSaleService.getUserGoodsById(id);
 		
+	}
+	
+	@ResponseBody
+	@RequestMapping("getWholeSaleByName")
+	public Result getWholeSaleByName(String name ){
+		String productName=null;
+		try {
+			productName=new String(name.getBytes("ISO-8859-1"), "UTF-8");
+		} catch (UnsupportedEncodingException e) {
+			e.printStackTrace();
+		}
+		return wholeSaleService.getUserGoodsByName(productName);
+	}
+	
+	@ResponseBody
+	@RequestMapping("getWholeSaleByAddress")
+	public Result getWholeSaleByAddress(String address){
+		String a=null;
+		try {
+			a=new String(address.getBytes("ISO-8859-1"), "UTF-8");
+		} catch (UnsupportedEncodingException e) {
+			e.printStackTrace();
+		}
+		return wholeSaleService.getUserGoodsByAddress(a);
 	}
 	
 	@ResponseBody

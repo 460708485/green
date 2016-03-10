@@ -9,9 +9,11 @@ public interface WholeSaleService {
 
 	public Result getUserGoodsById(int id);
 	
+	public Result getUserGoodsByName(String name);
+	
 	public Result getGoodUsers();
 	
 	public Result getUserGoods();
 	
-	
+	public Result  getUserGoodsByAddress(String address);
 }

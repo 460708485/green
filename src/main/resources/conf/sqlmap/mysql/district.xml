@@ -6,9 +6,9 @@
 	<typeAlias alias="district"
 		type="com.wang.green.domain.District" />
 	<resultMap id="district" class="district">
-		<result property="districtId" column="district_id" javaType="int"/>
-		<result property="districtName" column="district_name" javaType="varchar"/>
-		<result property="cityId" column="city_id" javaType="int"/>
+		<result property="districtId" column="district_id" />
+		<result property="districtName" column="district_name" />
+		<result property="cityId" column="city_id"/>
 	</resultMap>
 
 	<sql id="districtSelect">

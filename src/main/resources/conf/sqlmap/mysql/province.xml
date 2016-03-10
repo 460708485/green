@@ -6,8 +6,8 @@
 	<typeAlias alias="province"
 		type="com.wang.green.domain.Province" />
 	<resultMap class="province" id="province">
-		<result property="provinceId" column="province_id" javaType="int"/>
-		<result property="provinceName" column="province_name" javaType="VARCHAR"/>
+		<result property="provinceId" column="province_id" />
+		<result property="provinceName" column="province_name" />
 	</resultMap>	
 	
 		
@@ -16,7 +16,7 @@
 	</select>
 	
 	<select id="findAll" resultMap="province">
-		select * from s_pronvince
+		select * from s_province
 	</select>
 
 </sqlMap>

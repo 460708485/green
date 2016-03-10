@@ -6,10 +6,10 @@
 	<typeAlias alias="city"
 		type="com.wang.green.domain.City" />
 	<resultMap id="city" class="city">
-		<result property="cityId" column="city_id"  javaType="int"/>
-		<result property="cityName" column="city_name" javaType="varchar"/>
-		<result property="zipcode" column="ZipCode" javaType="varchar"/>
-		<result property="provinceId" column="province_id" javaType="int"/>
+		<result property="cityId" column="city_id"  />
+		<result property="cityName" column="city_name" />
+		<result property="zipcode" column="ZipCode" />
+		<result property="provinceId" column="province_id" />
 	</resultMap>
 	<!-- Normal SQL -->
 	<sql id="citySelect">
