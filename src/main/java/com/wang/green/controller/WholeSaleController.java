@@ -48,27 +48,34 @@ private Logger logger = Logger.getLogger(UserController.class);
 	}
 	
 	@ResponseBody
+	@RequestMapping("getWholeSaleByWPId")
+	public Result getWholeSaleByWPId(int wpinfo_id ){
+		return wholeSaleService.getUserGoodsByWPId(wpinfo_id);
+		
+	}
+	
+	@ResponseBody
 	@RequestMapping("getWholeSaleByName")
 	public Result getWholeSaleByName(String name ){
-		String productName=null;
 		try {
-			productName=new String(name.getBytes("ISO-8859-1"), "UTF-8");
+			URLDecoder.decode(URLDecoder.decode(name, "UTF-8"), "UTF-8");
 		} catch (UnsupportedEncodingException e) {
 			e.printStackTrace();
 		}
-		return wholeSaleService.getUserGoodsByName(productName);
+		System.out.println("***"+name);
+		return wholeSaleService.getUserGoodsByName(name);
 	}
 	
 	@ResponseBody
 	@RequestMapping("getWholeSaleByAddress")
 	public Result getWholeSaleByAddress(String address){
-		String a=null;
-		try {
-			a=new String(address.getBytes("ISO-8859-1"), "UTF-8");
+		 try {
+			URLDecoder.decode(URLDecoder.decode(address, "UTF-8"), "UTF-8");
 		} catch (UnsupportedEncodingException e) {
 			e.printStackTrace();
 		}
-		return wholeSaleService.getUserGoodsByAddress(a);
+		System.out.println("***"+address);
+		return wholeSaleService.getUserGoodsByAddress(address);
 	}
 	
 	@ResponseBody

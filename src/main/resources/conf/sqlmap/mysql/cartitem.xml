@@ -39,12 +39,13 @@
 	<select id="getById" parameterClass="java.lang.Integer" resultClass="com.wang.green.domain.WPinfo">
 	<![CDATA[
 		SELECT
-		wp.id,
+		c.id,
 		w.wholesale_name,
 		w.address,
 		wp.product_id,
 		p.product_name,
 		p.picture,
+		c.prodNum,
 		wp.promote_price
 		from wholesale w left outer join wpinfo wp on w.wholesale_id=wp.wholesale_id
 		 left outer join product p on wp.product_id=p.product_id
@@ -64,9 +65,9 @@
 		]]>
 	</update>
 	
-	<delete id="deleteCart" parameterClass="cartitem">
+	<delete id="deleteCart" parameterClass="java.lang.Integer">
 		<![CDATA[
-		DELETE cartitem 
+		delete from cartitem 
 		WHERE
 		id=#id#
 		]]>

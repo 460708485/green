@@ -39,11 +39,12 @@ public class AddressController {
 	}
 	
 	@ResponseBody
-	@RequestMapping(value="update/{id}")
+	@RequestMapping(value="update")
 	public Result update(@RequestBody String address){
 		Gson gson=new Gson();
 		Address a=gson.fromJson(address, Address.class);
-		return service.insert(a);
+		System.out.println("****"+address);
+		return service.update(a);
 	}
 	
 	

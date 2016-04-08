@@ -43,6 +43,7 @@ public class CartItemServiceImpl implements CartItemService{
 		if(0==num){
 			result.setStatus(0);
 			result.setMsg("0条记录删除");
+			return result;
 		}
 		result.setStatus(1);
 		result.setMsg("删除成功！");

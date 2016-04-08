@@ -15,4 +15,5 @@ public interface WholeSaleService {
 	public Result getUserGoods();
 	
 	public Result  getUserGoodsByAddress(String address);
+	public Result  getUserGoodsByWPId(int wpinfo_id);
 }

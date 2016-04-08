@@ -36,9 +36,10 @@ public class AddressServiceImpl implements AddressService{
 		if(0!=num){
 			result.setStatus(1);
 			result.setMsg("success");
+			return result;
 		}
 		result.setStatus(0);
-		result.setMsg("failure");
+		result.setMsg("fail");
 		return result;
 	}
 

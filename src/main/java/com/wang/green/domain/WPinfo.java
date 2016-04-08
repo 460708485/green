@@ -9,16 +9,24 @@ import java.io.Serializable;
 public class WPinfo implements Serializable{
 
 	private static final long serialVersionUID = 1000008L;
+	private Integer id;
 	private String wholesale_name;
 	private Integer product_id;
 	private String product_name;//产品名
 	private String picture;//产品图片
+	private int prodNum;//数量
 	private double product_price;//商家定价
 	private double promote_price;//促销价
 	private int status;//状态 0为不促销，1为促销
 	private int sale_volume;//销量
 	private int left_time;//促销剩余时间
-
+                                           
+	public Integer getId() {
+		return id;
+	}
+	public void setId(Integer id) {
+		this.id = id;
+	}
 	public String getWholesale_name() {
 		return wholesale_name;
 	}
@@ -76,6 +84,12 @@ public class WPinfo implements Serializable{
 	}
 	
 	
+	public int getProdNum() {
+		return prodNum;
+	}
+	public void setProdNum(int prodNum) {
+		this.prodNum = prodNum;
+	}
 	@Override
 	public String toString() {
 		return "WPinfo [wholesale_name=" + wholesale_name + ", product_id=" + product_id + ", product_price="

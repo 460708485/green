@@ -61,7 +61,7 @@
 	</select>
 	
 	
-	 <select id="getWholeSaleGoodsByWPId" parameterClass="int" resultClass="java.util.HashMap" >
+	 <select id="getWholeSaleGoodsByWPId" parameterClass="int" resultClass="com.wang.green.domain.WPinfo" >
 		SELECT
 		wp.id,
 		w.wholesale_name,

@@ -73,4 +73,14 @@ public class WholeSaleServiceImpl implements WholeSaleService{
 		return result;
 	}
 
+	public Result getUserGoodsByWPId(int wpinfo_id) {
+		
+		Result result=new Result();
+		WPinfo wpinfo=wholeSaleDao.getWholeSaleGoodsByWPId(wpinfo_id);
+		result.setStatus(1);
+		result.setMsg("查询成功！");
+		result.setData(wpinfo);
+		return result;
+	}
+
 }

@@ -33,9 +33,11 @@ public class Address implements Serializable{
     private int isdefault;
 
     /**  */
+    private String userName;
+    
+    private String phone;
+    
     private int userId;
-
-
 
 	public int getId() {
 		return id;
@@ -52,13 +54,14 @@ public class Address implements Serializable{
 	public void setIsdefault(int isdefault) {
 		this.isdefault = isdefault;
 	}
+	
 
-	public int getUserId() {
-		return userId;
+	public String getUserName() {
+		return userName;
 	}
 
-	public void setUserId(int userId) {
-		this.userId = userId;
+	public void setUserName(String userName) {
+		this.userName = userName;
 	}
 
 	public String getAddress() {
@@ -85,6 +88,23 @@ public class Address implements Serializable{
 		this.zipcode = zipcode;
 	}
 
+	public String getPhone() {
+		return phone;
+	}
+
+	public void setPhone(String phone) {
+		this.phone = phone;
+	}
+
+	public int getUserId() {
+		return userId;
+	}
+
+	public void setUserId(int userId) {
+		this.userId = userId;
+	}
+	
+	
 	
 
     
