@@ -18,5 +18,5 @@
         http://www.springframework.org/schema/aop/spring-aop-3.0.xsd"  default-autowire="byName">  
   
 	<import resource="applicationContext-resource.xml"/>
-
+	
 </beans>
