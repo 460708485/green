@@ -11,7 +11,7 @@ public class CommonException extends Exception {
 
 	private static final long serialVersionUID = 11214561321L;
 	
-	private ErrorInter  errorEnum;
+	private CommonErrorEnum  errorEnum;
 	
 	public CommonException() {
 		
@@ -25,21 +25,21 @@ public class CommonException extends Exception {
 		super(t);
 	}
 
-	public CommonException(ErrorInter errorEnum) {
-		super(errorEnum.getCode()+""+errorEnum.getDescription());
+	public CommonException(CommonErrorEnum errorEnum) {
+		super(errorEnum.getCode()+""+errorEnum.getMessage());
 		this.errorEnum = errorEnum;
 	}
 
-	public CommonException(ErrorInter errorEnum,Throwable t) {
-		super(errorEnum.getCode()+""+errorEnum.getDescription());
+	public CommonException(CommonErrorEnum errorEnum,Throwable t) {
+		super(errorEnum.getCode()+""+errorEnum.getMessage());
 		this.errorEnum = errorEnum;
 	}
 	
-	public ErrorInter getErrorEnum() {
+	public CommonErrorEnum getErrorEnum() {
 		return errorEnum;
 	}
 
-	public void setErrorEnum(ErrorInter errorEnum) {
+	public void setErrorEnum(CommonErrorEnum errorEnum) {
 		this.errorEnum = errorEnum;
 	}
 	
