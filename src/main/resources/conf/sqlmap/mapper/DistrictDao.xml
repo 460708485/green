@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wang.green.dao.DistrictDao">
+
+	<sql id="districtSelect">
+		select
+		district_id,district_name,city_id
+		from s_district
+	</sql>
+
+	<select id="getById" resultType="District">
+		<include refid="districtSelect"/>
+		where district_id = #{districtId}
+	</select>
+	
+	<select id="getByCityId"  resultType="District">
+		<include refid="districtSelect"/>
+		where city_id = #{cityId}
+	</select>
+	
+</mapper>

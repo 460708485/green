@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN"
+"http://www.ibatis.com/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="Cartitem">
+	<typeAlias alias="cartitem" type="com.wang.green.domain.CartItem" />	
+	
+	<insert id="addCart" parameterClass="cartitem">
+		<![CDATA[
+		INSERT INTO cartitem (
+			id, wpinfo_id,user_id,prodNum,price
+		) VALUES (
+			#id#, #wpinfo_id#,#user_id#,#prodNum#,#price#
+		)
+		]]>
+		<selectKey resultClass="int" keyProperty="id"> 
+		select max(id) from cartitem 
+		</selectKey>   
+	</insert>
+	
+	<select id="getAll" parameterClass="java.util.Map" resultClass="cartitem">
+	<![CDATA[
+		SELECT
+		id, wpinfo_id,user_id,prodNum,price
+		FROM cartitem
+	]]>
+	</select>
+	
+	<select id="countCart" parameterClass="java.util.Map" resultClass="java.lang.Integer">
+	<![CDATA[
+		SELECT
+		COUNT(*) 
+		FROM cartitem
+		WHERE
+		1
+	]]>
+	</select>
+	
+	<select id="getById" parameterClass="java.lang.Integer" resultClass="com.wang.green.domain.WPinfo">
+	<![CDATA[
+		SELECT
+		c.id,
+		w.wholesale_name,
+		w.address,
+		wp.product_id,
+		p.product_name,
+		p.picture,
+		c.prodNum,
+		wp.promote_price
+		from wholesale w left outer join wpinfo wp on w.wholesale_id=wp.wholesale_id
+		 left outer join product p on wp.product_id=p.product_id
+		 left outer join cartitem c on wp.id=c.wpinfo_id 
+		WHERE
+		user_id=#user_id#
+	]]>
+	</select>
+	
+	<update id="updateCart" parameterClass="cartitem">
+		<![CDATA[
+		UPDATE cartitem 
+		SET
+		id=#id#,price=#price#, wpinfo_id=#wpinfo_id#,user_id=#user_id#,prodNum=#prodNum#
+		WHERE
+		id=#id#
+		]]>
+	</update>
+	
+	<delete id="deleteCart" parameterClass="java.lang.Integer">
+		<![CDATA[
+		delete from cartitem 
+		WHERE
+		id=#id#
+		]]>
+	</delete>
+	
+	
+</sqlMap>

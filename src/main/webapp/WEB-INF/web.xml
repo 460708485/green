@@ -7,7 +7,7 @@
 	<!-- log4j根目录 -->
 	<context-param>
 		<param-name>webAppRootKey</param-name>
-		<param-value>ssi.root</param-value>
+		<param-value>green.root</param-value>
 	</context-param>
 	<context-param>
 		<param-name>log4jConfigLocation</param-name>

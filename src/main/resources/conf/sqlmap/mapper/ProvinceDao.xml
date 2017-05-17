@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wang.green.dao.ProvinceDao">
+
+	<select id="getById" resultType="Province">
+		select * from s_province where province_id= #{province_id}
+	</select>
+	
+	<select id="getAll" resultType="Province">
+		select * from s_province
+	</select>
+	
+</mapper>

@@ -15,14 +15,14 @@ public class CityServiceImpl implements CityService{
 	public Result getById(int city_id) {
 		Result result=new Result();
 		result.setStatus(1);
-		result.setData(cityDao.getByCityId(city_id));
+		result.setData(cityDao.findById(city_id));
 		return result;
 	}
 
 	public Result getByProvinceId(int province_id) {
 		Result result=new Result();
 		result.setStatus(1);
-		result.setData(cityDao.getByProvinceId(province_id));
+		result.setData(cityDao.findByProvinceId(province_id));
 		return result;
 	}
 	
