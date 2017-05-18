@@ -18,7 +18,7 @@
 	
 	<select id="findById"  resultMap="city">
 		<include refid="citySelect"/>
-		where city_id=#{cityId}
+		where city_id=#{cityId} 
 	</select>
 	
 	<select id="findByProvinceId"  resultMap="city">
