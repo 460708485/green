@@ -2,6 +2,8 @@ package com.wang.green.swagger.config;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter;
 
 import com.mangofactory.swagger.configuration.SpringSwaggerConfig;
@@ -13,9 +15,9 @@ import com.mangofactory.swagger.plugin.SwaggerSpringMvcPlugin;
  * @author wangjq
  *
  */
-//@Configuration
+@Configuration
 @EnableSwagger
-//@EnableWebMvc
+@EnableWebMvc
 public class SwaggerConfig {
 
     private SpringSwaggerConfig springSwaggerConfig; 

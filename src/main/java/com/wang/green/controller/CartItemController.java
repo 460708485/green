@@ -7,13 +7,14 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
 
 import com.google.gson.Gson;
 import com.wang.green.domain.CartItem;
 import com.wang.green.domain.Result;
 import com.wang.green.service.CartItemService;
 
-@Controller
+@RestController
 @RequestMapping("cart")
 public class CartItemController {
 	@Resource

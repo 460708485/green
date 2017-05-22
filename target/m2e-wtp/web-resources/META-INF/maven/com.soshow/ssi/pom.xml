@@ -183,6 +183,6 @@
 				
 	</dependencies>
 	<build>
-		<finalName>ssi</finalName>
+		<finalName>green</finalName>
 	</build>
 </project>

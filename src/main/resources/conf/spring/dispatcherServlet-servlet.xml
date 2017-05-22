@@ -14,9 +14,9 @@
 	
 	<!-- 激活@Controller模式 -->
 	<mvc:annotation-driven />
-	<!--  对web包中的所有类进行扫描，以完成启动扫描所有的controller --> 
+<!-- 	
     <context:component-scan base-package="com.wang.green.controller" /> 
-	
+ -->	
 	<!-- 配置springmvc支持自动转换json -->
 	<bean id="mappingJacksonHttpMessageConverter" class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter">
 		<property name="supportedMediaTypes">
@@ -41,6 +41,9 @@
 		<property name="prefix" value="/WEB-INF/jsp/"></property>
 		<property name="suffix" value=".jsp"></property>
 	</bean>
+	
+	<!-- Swagger配置 -->
+	<import resource="applicationContext-web-swagger-dev.xml"/>
 	
 	<!-- 上传必须配置 不然转换会报错 -->
 	<bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">

@@ -6,13 +6,14 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
 
 import com.google.gson.Gson;
 import com.wang.green.domain.Address;
 import com.wang.green.domain.Result;
 import com.wang.green.service.AddressService;
 
-@Controller
+@RestController
 @RequestMapping("address")
 public class AddressController {
 	@Resource
