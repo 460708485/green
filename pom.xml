@@ -17,6 +17,8 @@
 		<mysql.version>5.1.26</mysql.version>
 		<log4j.version>1.2.13</log4j.version>
 		<jackson.version>2.7.4</jackson.version>
+		<hibernate-validator-version>5.2.4.Final</hibernate-validator-version>
+		<javax-el-api-version>2.2.5</javax-el-api-version>
 	</properties>
 
 	<dependencies>
@@ -116,6 +118,18 @@
 				</exclusion>
 			</exclusions>
 		</dependency>
+		
+		<dependency>
+		  <groupId>org.hibernate</groupId>
+		  <artifactId>hibernate-validator</artifactId>
+		  <version>${hibernate-validator-version}</version>
+	  </dependency>
+	  <dependency>
+		  <groupId>javax.el</groupId>
+		  <artifactId>javax.el-api</artifactId>
+		  <version>${javax-el-api-version}</version>
+	  </dependency>
+		
 		<!-- Spring依赖包 End -->
 	
 		<!-- 其它依赖包 -->

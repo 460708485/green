@@ -14,4 +14,17 @@
 	http://www.springframework.org/schema/context
 	http://www.springframework.org/schema/context/spring-context-3.2.xsd">
 
+	<bean id="excelView" class="com.pycredit.common.web.view.ExcelView">
+	</bean>
+
+	<!-- <bean id="jxlsView" class="com.tianxiaxinyong.common.web.view.JxlsView">
+		<property name="xlsTemplateLocation" value="/xls-template/"/>
+	</bean> -->
+	
+	<bean id="jxlsxFileView" class="com.pycredit.common.web.view.JxlsxFileView">
+	</bean>
+	
+	<bean id="imageView" class="com.pycredit.common.web.view.ImageView">
+	</bean>
+
 </beans>
