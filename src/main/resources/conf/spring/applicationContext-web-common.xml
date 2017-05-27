@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+    xmlns:tx="http://www.springframework.org/schema/tx"
+    xmlns:task="http://www.springframework.org/schema/task"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans
+	http://www.springframework.org/schema/beans/spring-beans-4.2.xsd
+	http://www.springframework.org/schema/context
+	http://www.springframework.org/schema/context/spring-context-4.2.xsd
+	http://www.springframework.org/schema/aop
+	http://www.springframework.org/schema/aop/spring-aop-4.2.xsd
+	http://www.springframework.org/schema/tx
+	http://www.springframework.org/schema/tx/spring-tx-4.2.xsd
+	http://www.springframework.org/schema/task
+	http://www.springframework.org/schema/task/spring-task-4.2.xsd
+	">
+
+	<bean name="poolConfig" class="redis.clients.jedis.JedisPoolConfig" >
+                <property name="maxIdle"> 
+                        <value>${redis.maxIdle}</value> 
+                </property> 
+                <property name="maxTotal"> 
+                        <value>${redis.maxTotal}</value> 
+                </property> 
+                <property name="maxWaitMillis"> 
+                        <value>${redis.maxWaitMillis}</value> 
+                </property> 
+                <property name="minIdle"> 
+                        <value>${redis.minIdle}</value> 
+                </property> 
+                <property name="testOnBorrow"> 
+                        <value>${redis.testOnBorrow}</value> 
+                </property> 
+                <property name="testOnReturn"> 
+                        <value>${redis.testOnReturn}</value> 
+                </property> 
+                <property name="testWhileIdle"> 
+                        <value>${redis.testWhileIdle}</value> 
+                </property> 
+                <property name="timeBetweenEvictionRunsMillis"> 
+                        <value>${redis.timeBetweenEvictionRunsMillis}</value> 
+                </property> 
+	</bean>
+	
+	<bean name="jedisPool" class="redis.clients.jedis.JedisPool"
+		destroy-method="destroy">
+		<constructor-arg name="poolConfig" ref="poolConfig" />
+		<constructor-arg name="host" value="${redis.server.ip}" />
+		<constructor-arg name="port" value="${redis.server.port}" />
+		<constructor-arg name="timeout" value="${redis.defaultTimeOut}" />
+	</bean>
+
+
+	<bean name="redisTemplate" class="com.wang.green.common.cache.RedisTemplate" >
+		<property name="jedisPool" ref="jedisPool"/>
+	</bean>
+
+    <bean id="dataSource" class="com.alibaba.druid.pool.DruidDataSource" init-method="init" destroy-method="close">
+        <property name="url" value="${jdbc.url}" />
+        <property name="username" value="${jdbc.username}" />
+        <property name="password" value="${jdbc.password}" />
+        <!-- 配置初始化大小、最小、最大 -->
+        <property name="initialSize" value="${druid.initialSize}"/>
+        <property name="minIdle" value="${druid.minIdle}"/>
+        <property name="maxActive" value="${druid.maxActive}"/>
+
+        <!-- 配置获取连接等待超时的时间 -->
+        <property name="maxWait" value="${druid.maxWait}"/>
+        <!-- 配置间隔多久才进行一次检测，检测需要关闭的空闲连接，单位是毫秒 -->
+        <property name="timeBetweenEvictionRunsMillis" value="${druid.timeBetweenEvictionRunsMillis}" />
+
+        <!-- 配置一个连接在池中最小生存的时间，单位是毫秒 -->
+        <property name="minEvictableIdleTimeMillis" value="${druid.minEvictableIdleTimeMillis}" />
+
+        <property name="validationQuery" value="${druid.validationQuery}" />
+        <property name="testWhileIdle" value="${druid.testWhileIdle}" />
+        <property name="testOnBorrow" value="${druid.testOnBorrow}" />
+        <property name="testOnReturn" value="${druid.testOnReturn}" />
+
+        <!-- 打开PSCache，并且指定每个连接上PSCache的大小  如果用Oracle，则把poolPreparedStatements配置为true，mysql可以配置为false。-->
+        <property name="poolPreparedStatements" value="${druid.poolPreparedStatements}" />
+        <property name="maxPoolPreparedStatementPerConnectionSize" value="${druid.maxPoolPreparedStatementPerConnectionSize}" />
+
+        <!-- 配置监控统计拦截的filters -->
+        <property name="filters" value="${druid.filters}" />
+    </bean>
+
+
+    <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+        <property name="dataSource" ref="dataSource" />
+        <property name="configLocation" value="classpath:conf/sqlmap/mybatis-config.xml" />
+        <property name="mapperLocations" value="classpath:conf/sqlmap/mapper/*.xml"/>
+        <property name="typeAliasesPackage" value="com.wang.green.domain"></property>
+    </bean>
+
+    <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+        <property name="basePackage" value="com.wang.green.*.dao" />
+        <property name="sqlSessionFactoryBeanName" value="sqlSessionFactory" />
+    </bean>
+
+    <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+        <property name="dataSource" ref="dataSource" />
+    </bean>
+
+   
+
+</beans>

@@ -1,5 +1,11 @@
 eclipse.preferences.version=1
+encoding//src/main/java/com/wang/green/common/ExcelSerializeable.java=UTF-8
+encoding//src/main/java/com/wang/green/common/cache/IKeyNamingPolicy.java=UTF-8
+encoding//src/main/java/com/wang/green/common/cache/KeyTypeShortNamingPolicy.java=UTF-8
+encoding//src/main/java/com/wang/green/common/cache/RedisTemplate.java=UTF-8
 encoding//src/main/java/com/wang/green/controller=UTF-8
+encoding//src/main/java/com/wang/green/view/JxlsView.java=UTF-8
 encoding//src/main/java/greensale.sql=UTF-8
+encoding//src/main/resources/conf/application.properties=UTF-8
 encoding//src/main/resources/json.txt=UTF-8
 encoding//src/main/webapp/register.jsp=UTF-8

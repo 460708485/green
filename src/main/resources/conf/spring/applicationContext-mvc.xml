@@ -18,10 +18,6 @@
 		
 	<context:component-scan base-package="com.wang.green"
 		use-default-filters="false">
-		<context:include-filter type="annotation"
-			expression="org.springframework.stereotype.Controller" />
-		<!-- <context:include-filter type="annotation"
-			expression="org.springframework.web.bind.annotation.ControllerAdvice" /> -->
 	</context:component-scan>
 
 	<mvc:annotation-driven content-negotiation-manager="contentNegotiationManager" enable-matrix-variables="true">
@@ -63,25 +59,6 @@
     </mvc:annotation-driven>
 
 	<mvc:default-servlet-handler/>
-	
-	<!-- <mvc:interceptors>
-		<mvc:interceptor>
-			<mvc:mapping path="/web-api/**"/>
-				<bean class="com.pycredit.common.web.UserSigninInterceptor">
-				</bean>
-		</mvc:interceptor>
-	</mvc:interceptors> -->
-	
-	<!--微信验证拦截 
-	<bean id="multipartResolver"
-		class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
-		<property name="maxUploadSize">
-			<value>5120000</value>
-		</property>
-		<property name="maxInMemorySize">
-			<value>1024</value>
-		</property>
-	</bean> -->
 
 	<bean id="contentNegotiationManager" class="org.springframework.web.accept.ContentNegotiationManagerFactoryBean">
         <!-- 扩展名至mimeType的映射,即 /user.json => application/json -->
@@ -143,10 +120,7 @@
 		<property name="location" value="classpath:conf/spring/applicationContext-web-mvc-views.xml"/>
 	</bean>
 	
+	<import resource="applicationContext-web-common.xml"/>
 	<import resource="applicationContext-web-swagger-dev.xml"/>
 	
-	<!-- 启用AspectJ对Annotation的支持 -->         
-  <!--   <aop:aspectj-autoproxy />
-    <bean class="com.pycredit.common.web.aop.SysActionLogAspect"/>
-     -->
 </beans>  

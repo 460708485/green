@@ -21,6 +21,7 @@ import com.wang.green.service.UserService;
  *
  */
 @RestController
+@RequestMapping("/")
 public class UserController {
 
 	@SuppressWarnings("unused")
