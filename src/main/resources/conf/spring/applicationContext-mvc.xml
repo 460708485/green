@@ -11,14 +11,6 @@
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.2.xsd"
 	default-lazy-init="false">
 	
-	<context:property-placeholder
-		ignore-unresolvable="true" ignore-resource-not-found="true"
-		system-properties-mode="NEVER"
-		location="classpath:conf/application.properties" />
-		
-	<context:component-scan base-package="com.wang.green"
-		use-default-filters="false">
-	</context:component-scan>
 
 	<mvc:annotation-driven content-negotiation-manager="contentNegotiationManager" enable-matrix-variables="true">
         <mvc:message-converters register-defaults="true">
@@ -102,8 +94,6 @@
 		</property>
 	</bean>
 	
-	<!-- <bean class="com.pycredit.common.web.DefaultExceptionHandler"/> -->
-	
 	<bean id="localeResolver" class="org.springframework.web.servlet.i18n.SessionLocaleResolver">  
 	    <property name="defaultLocale" value="zh_CN"/>  
 	</bean>  
@@ -120,7 +110,6 @@
 		<property name="location" value="classpath:conf/spring/applicationContext-web-mvc-views.xml"/>
 	</bean>
 	
-	<import resource="applicationContext-web-common.xml"/>
 	<import resource="applicationContext-web-swagger-dev.xml"/>
 	
 </beans>  

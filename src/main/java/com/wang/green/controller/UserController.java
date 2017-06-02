@@ -4,10 +4,10 @@ package com.wang.green.controller;
 
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
 
 import com.google.gson.Gson;
 import com.wang.green.domain.Result;
@@ -20,8 +20,7 @@ import com.wang.green.service.UserService;
  * @author wangjq
  *
  */
-@RestController
-@RequestMapping("/")
+@Controller
 public class UserController {
 
 	@SuppressWarnings("unused")
