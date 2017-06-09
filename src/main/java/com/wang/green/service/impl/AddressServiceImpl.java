@@ -10,8 +10,10 @@ import com.wang.green.dao.AddressDao;
 import com.wang.green.domain.Address;
 import com.wang.green.domain.Result;
 import com.wang.green.service.AddressService;
+
 @Service
 public class AddressServiceImpl implements AddressService{
+	
 	@Resource
 	private AddressDao addressDao;
 	

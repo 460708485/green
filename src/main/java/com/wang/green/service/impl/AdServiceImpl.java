@@ -10,6 +10,7 @@ import com.wang.green.service.AdService;
 
 @Service
 public class AdServiceImpl implements AdService{
+	
 	@Resource
 	private AdDao adDao;
 	
