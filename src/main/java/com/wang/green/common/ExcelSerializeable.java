@@ -2,7 +2,7 @@ package com.wang.green.common;
 
 /**
  * 支持Excel格式的序列化和反序列
- * @author yinjy
+ * @author wangjq
  *
  */
 public interface ExcelSerializeable { 

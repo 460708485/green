@@ -16,9 +16,6 @@ import com.alibaba.fastjson.JSON;
 import com.wang.green.common.BaseResult;
 
 /**
- * 错误信息统一处理
- * 对未处理的错误信息做一个统一处理
- * @author yingjun
  *
  */
 @Component
@@ -28,13 +25,13 @@ public class GlobalExceptionResolver implements HandlerExceptionResolver {
 	
 	@ResponseBody
 	public ModelAndView resolveException(HttpServletRequest request, HttpServletResponse response, Object handler, Exception ex) {
-		LOG.error("访问" + request.getRequestURI() + " 发生错误, 错误信息:" + ex.getMessage());
-		//这里有2种选择
-		//跳转到定制化的错误页面
+		LOG.error("锟斤拷锟斤拷" + request.getRequestURI() + " 锟斤拷锟斤拷锟斤拷锟斤拷, 锟斤拷锟斤拷锟斤拷息:" + ex.getMessage());
+		//锟斤拷锟斤拷锟斤拷2锟斤拷选锟斤拷
+		//锟斤拷转锟斤拷锟斤拷锟狡伙拷锟侥达拷锟斤拷页锟斤拷
 	    /*ModelAndView error = new ModelAndView("error");
 		error.addObject("exMsg", ex.getMessage());
 		error.addObject("exType", ex.getClass().getSimpleName().replace("\"", "'"));*/
-		//返回json格式的错误信息
+		//锟斤拷锟斤拷json锟斤拷式锟侥达拷锟斤拷锟斤拷息
 		try {
 			PrintWriter writer = response.getWriter();
 			BaseResult<String> result=new BaseResult(false, ex.getMessage());

@@ -9,11 +9,9 @@ import redis.clients.util.SafeEncoder;
 
 /**
  *
- * @author yiz
- * @date 2016å¹?5æœ?10æ—? ä¸‹åˆ4:43:32
- * @version 1.0.0 
- * @copyright pycredit.cn 
  */
+
+
 public class JdkSerializer implements ISerializer {
 	public static final ISerializer me = new JdkSerializer();
 
