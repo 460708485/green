@@ -9,21 +9,21 @@
     <context:annotation-config/>
     
     <!-- 缓存管理器 使用Redis实现 -->
-    <bean id="redisCacheManager" class="com.pycredit.common.web.cache.RedisCacheManager">
+    <bean id="redisCacheManager" class="com.green.common.web.cache.RedisCacheManager">
         <property name="redisTemplate" ref="redisTemplate" />
     </bean>
     
     <!-- 缓存管理器 代理 -->
-    <bean id="cacheManager" class="com.pycredit.common.web.cache.DelegateCacheManager">
+    <bean id="cacheManager" class="com.green.common.web.cache.DelegateCacheManager">
         <property name="targetCacheManager" ref="${shiro.cache.manager:redisCacheManager}" />
     </bean>
 
     <!-- 凭证匹配器 -->
-    <bean id="credentialsMatcher" class="com.pycredit.common.web.credentials.MyCredentialsMatcher">
+    <bean id="credentialsMatcher" class="com.green.common.web.credentials.MyCredentialsMatcher">
         <constructor-arg ref="cacheManager" />
     </bean>
 
-    <bean id="kickoutSessionControlFilter" class="com.pycredit.common.web.filters.KickoutSessionControlFilter">
+    <bean id="kickoutSessionControlFilter" class="com.green.common.web.filters.KickoutSessionControlFilter">
         <property name="cacheManager" ref="cacheManager" />
         <property name="sessionManager" ref="sessionManager" />
 
@@ -88,7 +88,7 @@
     </bean>
 
     <!-- 身份验证过滤器 -->    
-    <bean id="userFilter" class="com.pycredit.common.web.filters.MyUserFilter">
+    <bean id="userFilter" class="com.green.common.web.filters.MyUserFilter">
         <property name="redisTemplate" ref="redisTemplate" />
         <property name="loginUrl" value="/web-api/user/login" />
         <property name="unLoginUrl" value="/biz/login/index.html" />
@@ -113,7 +113,7 @@
     </bean>
 
     <!-- Define the Shiro Realm implementation you want to use to connect to your back-end -->
-    <bean id="txxyRealm" class="com.pycredit.common.web.credentials.MyRealm">
+    <bean id="txxyRealm" class="com.green.common.web.credentials.MyRealm">
         <property name="credentialsMatcher" ref="credentialsMatcher"/>
         <property name="cachingEnabled" value="true"/>
         <!-- <property name="userService" ref="userService" /> -->

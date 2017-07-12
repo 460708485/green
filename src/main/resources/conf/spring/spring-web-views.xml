@@ -17,10 +17,6 @@
 	<bean id="excelView" class="com.wang.green.view.ExcelView">
 	</bean>
 
-	<!-- <bean id="jxlsView" class="com.tianxiaxinyong.common.web.view.JxlsView">
-		<property name="xlsTemplateLocation" value="/xls-template/"/>
-	</bean> -->
-	
 	<bean id="jxlsxFileView" class="com.wang.green.view.JxlsxFileView">
 	</bean>
 	
