@@ -39,4 +39,12 @@ public interface UserService {
 	 * @return
 	 */
 	public Result addUser(User user);
+	
+	
+	/**
+	 * 根据条件查找
+	 * @param password
+	 * @return
+	 */
+	public Result findByCondition(String username);
 }

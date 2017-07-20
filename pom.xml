@@ -20,6 +20,7 @@
 		<hibernate-validator-version>5.2.4.Final</hibernate-validator-version>
 		<javax-el-api-version>2.2.5</javax-el-api-version>
 		<latest.release.version>2.1.5</latest.release.version>
+		<org.apache.shiro-version>1.2.2</org.apache.shiro-version>
 	</properties>
 
 	<dependencies>
@@ -221,6 +222,34 @@
 	    <artifactId>fastjson</artifactId>
 	    <version>1.2.20</version>
 	 </dependency>
+	 
+	<!-- shiro架包 --> 
+	<dependency>
+            <groupId>org.apache.shiro</groupId>
+            <artifactId>shiro-core</artifactId>
+            <version>${org.apache.shiro-version}</version>
+            <exclusions>
+	            <exclusion>
+	                <artifactId>slf4j-api</artifactId>
+	                <groupId>org.slf4j</groupId>
+	            </exclusion>
+          </exclusions>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.shiro</groupId>
+            <artifactId>shiro-web</artifactId>
+            <version>${org.apache.shiro-version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.shiro</groupId>
+            <artifactId>shiro-spring</artifactId>
+            <version>${org.apache.shiro-version}</version>
+        </dependency>
+        <dependency>
+          <groupId>org.apache.shiro</groupId>
+          <artifactId>shiro-quartz</artifactId>
+          <version>${org.apache.shiro-version}</version>
+        </dependency>
 		 
 	<!-- 引入elastic-job-lite核心模块 -->
 	<dependency>

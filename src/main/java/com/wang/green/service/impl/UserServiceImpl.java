@@ -72,5 +72,10 @@ public class UserServiceImpl implements UserService{
 		result.setMsg("register failed！");
 		return result;
 	}
+
+	@Override
+	public Result findByCondition(String username) {
+		return null;
+	}
 	
 }
