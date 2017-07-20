@@ -6,19 +6,19 @@
         http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.2.xsd
         http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-3.2.xsd">
     
-    <context:annotation-config/>
+    <!-- <context:annotation-config/>
     
-    <!-- 缓存管理器 使用Redis实现 -->
-    <bean id="redisCacheManager" class="com.green.common.web.cache.RedisCacheManager">
+    缓存管理器 使用Redis实现
+    <bean id="redisCacheManager" class="com.wang.green.common.web.cache.RedisCacheManager">
         <property name="redisTemplate" ref="redisTemplate" />
     </bean>
     
-    <!-- 缓存管理器 代理 -->
+    缓存管理器 代理
     <bean id="cacheManager" class="com.green.common.web.cache.DelegateCacheManager">
         <property name="targetCacheManager" ref="${shiro.cache.manager:redisCacheManager}" />
     </bean>
 
-    <!-- 凭证匹配器 -->
+    凭证匹配器
     <bean id="credentialsMatcher" class="com.green.common.web.credentials.MyCredentialsMatcher">
         <constructor-arg ref="cacheManager" />
     </bean>
@@ -32,18 +32,18 @@
         <property name="kickoutUrl" value="/user/kickedout" />
     </bean>
 
-    <!-- 会话ID生成器,用于SessionDAO缓冲相关 -->
+    会话ID生成器,用于SessionDAO缓冲相关
     <bean id="sessionIdGenerator"
         class="org.apache.shiro.session.mgt.eis.JavaUuidSessionIdGenerator" />
 
-    <!-- 会话Cookie模板,用于rememberMe 功能 -->
+    会话Cookie模板,用于rememberMe 功能
     <bean id="sessionIdCookie" class="org.apache.shiro.web.servlet.SimpleCookie">
         <constructor-arg value="sid" />
         <property name="httpOnly" value="true" />
         <property name="maxAge" value="${shiro.session.timeout:1800000}" />
     </bean>
 
-    <!-- Shiro本身提供SessionDAO的实现用以保存企业级/分布式的缓存数据.EnterpriseCacheSessionDAO,可以在CacheManager中配置它来实现缓存机制 -->
+    Shiro本身提供SessionDAO的实现用以保存企业级/分布式的缓存数据.EnterpriseCacheSessionDAO,可以在CacheManager中配置它来实现缓存机制
     <bean id="sessionDAO"
         class="org.apache.shiro.session.mgt.eis.EnterpriseCacheSessionDAO">
         <property name="cacheManager" ref="cacheManager" />
@@ -51,16 +51,16 @@
         <property name="sessionIdGenerator" ref="sessionIdGenerator" />
     </bean>
 
-    <!-- Shiro提供了会话验证调度器,用于定期的验证会话是否已过期,如果过期将停止会话;出 于性能考虑,一般情况下都是获取会话时来验证会话是否过期并停止会话的;但是如在web 
-        环境中,如果用户不主动退出是不知道会话是否过期的,因此需要定期的检测会话是否过 期.下方配置是使用Quartz会话验证调度器 -->
+    Shiro提供了会话验证调度器,用于定期的验证会话是否已过期,如果过期将停止会话;出 于性能考虑,一般情况下都是获取会话时来验证会话是否过期并停止会话的;但是如在web 
+        环境中,如果用户不主动退出是不知道会话是否过期的,因此需要定期的检测会话是否过 期.下方配置是使用Quartz会话验证调度器
     <bean id="sessionValidationScheduler"
         class="org.apache.shiro.session.mgt.quartz.QuartzSessionValidationScheduler">
         <property name="sessionValidationInterval" value="${shiro.session.timeout:1800000}" />
         <property name="sessionManager" ref="sessionManager" />
     </bean>
 
-    <!-- 会话管理器 -->
-    <!-- 用于Web 环境的实现， 可以替代 ServletContainerSessionManager，自己维护着会话，直接废弃了Servlet容器的会话管理。 -->
+    会话管理器
+    用于Web 环境的实现， 可以替代 ServletContainerSessionManager，自己维护着会话，直接废弃了Servlet容器的会话管理。
     <bean id="sessionManager"
         class="org.apache.shiro.web.session.mgt.DefaultWebSessionManager">
         <property name="globalSessionTimeout" value="${shiro.session.timeout:1800000}" />
@@ -72,14 +72,14 @@
         <property name="sessionValidationSchedulerEnabled" value="true" />
     </bean>
 
-    <!-- 安全管理器 -->
+    安全管理器
     <bean id="securityManager" class="org.apache.shiro.web.mgt.DefaultWebSecurityManager">
         <property name="realm" ref="txxyRealm" />
         <property name="sessionManager" ref="sessionManager" />
         <property name="cacheManager" ref="cacheManager" />
     </bean>
 
-    <!-- 相当于调用SecurityUtils.setSecurityManager(securityManager) -->
+    相当于调用SecurityUtils.setSecurityManager(securityManager)
     <bean
         class="org.springframework.beans.factory.config.MethodInvokingFactoryBean">
         <property name="staticMethod"
@@ -87,7 +87,7 @@
         <property name="arguments" ref="securityManager" />
     </bean>
 
-    <!-- 身份验证过滤器 -->    
+    身份验证过滤器    
     <bean id="userFilter" class="com.green.common.web.filters.MyUserFilter">
         <property name="redisTemplate" ref="redisTemplate" />
         <property name="loginUrl" value="/web-api/user/login" />
@@ -96,7 +96,7 @@
         
     </bean>
 
-    <!-- Shiro的Web过滤器 -->
+    Shiro的Web过滤器
     <bean id="shiroFilter" class="org.apache.shiro.spring.web.ShiroFilterFactoryBean">
         <property name="securityManager" ref="securityManager" />
         <property name="filters">
@@ -112,14 +112,14 @@
         </property>
     </bean>
 
-    <!-- Define the Shiro Realm implementation you want to use to connect to your back-end -->
+    Define the Shiro Realm implementation you want to use to connect to your back-end
     <bean id="txxyRealm" class="com.green.common.web.credentials.MyRealm">
         <property name="credentialsMatcher" ref="credentialsMatcher"/>
         <property name="cachingEnabled" value="true"/>
-        <!-- <property name="userService" ref="userService" /> -->
+        <property name="userService" ref="userService" />
     </bean>
 
-    <!-- Shiro生命周期处理器 -->
+    Shiro生命周期处理器
     <bean id="lifecycleBeanPostProcessor" class="org.apache.shiro.spring.LifecycleBeanPostProcessor" />
 
     <bean class="org.springframework.aop.framework.autoproxy.DefaultAdvisorAutoProxyCreator" depends-on="lifecycleBeanPostProcessor">
@@ -129,5 +129,5 @@
     <bean class="org.apache.shiro.spring.security.interceptor.AuthorizationAttributeSourceAdvisor">
         <property name="securityManager" ref="securityManager"></property>
     </bean>
-
+	 -->
 </beans>

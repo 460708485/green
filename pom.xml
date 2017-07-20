@@ -19,6 +19,7 @@
 		<jackson.version>2.7.4</jackson.version>
 		<hibernate-validator-version>5.2.4.Final</hibernate-validator-version>
 		<javax-el-api-version>2.2.5</javax-el-api-version>
+		<latest.release.version>2.1.5</latest.release.version>
 	</properties>
 
 	<dependencies>
@@ -221,7 +222,19 @@
 	    <version>1.2.20</version>
 	 </dependency>
 		 
-
+	<!-- 引入elastic-job-lite核心模块 -->
+	<dependency>
+	    <groupId>com.dangdang</groupId>
+	    <artifactId>elastic-job-lite-core</artifactId>
+	    <version>${latest.release.version}</version>
+	</dependency>
+	
+	<!-- 使用springframework自定义命名空间时引入 -->
+	<dependency>
+	    <groupId>com.dangdang</groupId>
+	    <artifactId>elastic-job-lite-spring</artifactId>
+	    <version>${latest.release.version}</version>
+	</dependency>
 
 	</dependencies>
 	<build>
